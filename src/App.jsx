@@ -7,7 +7,7 @@ import './main.css'
 import Header from "./Header";
 
 import UseStateLearnComponent from "./useStateLearn";
-import RenderingCollection from "./renderingCollection";
+import CourseComponent from "./Course";
 
 
 
@@ -55,48 +55,81 @@ const App = () => {
   const courseTitle = "Kamal React Course"
 
   // Object Methods and "this"
-  const arto = {
-    name: 'Arto Hellas',
-    age: 35,
-    education: 'PHD',
-    greet: function () {
-      console.log('hello, my name is ' + this.name)
-    }
-  }
-  arto.greet()
+  // const arto = {
+  //   name: 'Arto Hellas',
+  //   age: 35,
+  //   education: 'PHD',
+  //   greet: function () {
+  //     console.log('hello, my name is ' + this.name)
+  //   }
+  // }
+  // arto.greet()
 
 
-  arto.growOlder = function () {
-    this.age += 1
-  }
+  // arto.growOlder = function () {
+  //   this.age += 1
+  // }
 
-  console.log(arto.age)
-  arto.growOlder()
-  console.log(arto.age)
+  // console.log(arto.age)
+  // arto.growOlder()
+  // console.log(arto.age)
 
-  const parts = [
+  // const parts = [
+  //   {
+  //     id:1,
+  //     name: 'Fundamentals of React',
+  //     exercises: 10
+  //   },
+  //   {
+  //     name: 'Using props to pass data',
+  //     exercises: 7
+  //   },
+  //   {
+  //     name: 'State of a component',
+  //     exercises: 14
+  //   }
+  // ]
+
+
+
+  const partss = [10, 20, 30];
+
+  const totalValue = partss.reduce((s, p) => {
+    console.log('what is happening', s, p);
+    return s + p;
+  }, 0);
+
+  console.log(totalValue)
+
+
+  const courses = [
     {
-      name: 'Fundamentals of React',
-      exercises: 10
+      name: 'Half Stack application development',
+      id: 1,
+      parts: [
+        { name: 'Fundamentals of React', exercises: 10, id: 1 },
+        { name: 'Using props to pass data', exercises: 7, id: 2 },
+        { name: 'State of a component', exercises: 14, id: 3 },
+        { name: 'Redux', exercises: 11, id: 4 }
+      ]
     },
     {
-      name: 'Using props to pass data',
-      exercises: 7
-    },
-    {
-      name: 'State of a component',
-      exercises: 14
+      name: 'Node.js',
+      id: 2,
+      parts: [
+        { name: 'Routing', exercises: 3, id: 1 },
+        { name: 'Middlewares', exercises: 7, id: 2 }
+      ]
     }
   ]
 
-  
   return (
     <>
       <div>
 
-        <Header course={courseTitle} />
+        {/* <Header course={courseTitle} /> */}
 
-        <UseStateLearnComponent />
+        {/* <UseStateLearnComponent /> */}
 
         {/* <ExerciseOne /> */}
 
@@ -104,13 +137,10 @@ const App = () => {
 
         {/* <ShowMap places={places} /> */}
 
-        {
-          parts.map(part => (
-            <RenderingCollection key={part.id} part={part} />
-          )
-          )
-        }
-
+        {courses.map(course => (
+          <CourseComponent key={course.id} course={course} />
+        ))}
+        
       </div>
     </>
   )
