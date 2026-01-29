@@ -8,6 +8,7 @@ import Header from "./Header";
 
 import UseStateLearnComponent from "./useStateLearn";
 import CourseComponent from "./Course";
+import PhoneBookComponent from "./phoneBook";
 
 
 
@@ -137,9 +138,11 @@ const App = () => {
 
         {/* <ShowMap places={places} /> */}
 
-        {courses.map(course => (
+        {/* {courses.map(course => (
           <CourseComponent key={course.id} course={course} />
-        ))}
+        ))} */}
+
+        <PhoneBookComponent />
         
       </div>
     </>
