@@ -4,28 +4,33 @@ import { useState, useEffect } from 'react'
 
 const FetchingDataComponent = () => {
 
-    const [notes, setNotes] = useState([])
+    const [persons, setPersons] = useState([])
 
 
     useEffect(() => {
-        console.log('effect')
+        console.log('fetching data...')
+
         axios
-            .get('http://localhost:3001/notes')
+            .get('http://localhost:3001/api/persons')
             .then(response => {
                 console.log(response.data)
-                setNotes(response.data)
+                setPersons(response.data)
             })
+            .catch(error => {
+                console.error('Error fetching data:', error)
+            })
+
     }, [])
 
     return (
         <>
 
             <ul className='listStyle'>
-                {notes.map((note, i) => (
+                {persons.map((person, i) => (
                     <li key={i} >
-                        <p>{note.id}</p>
-                        <p>{note.content}</p>
-                        <p>{note.important}</p>
+                        <p>{person.id}</p>
+                        <p>{person.content}</p>
+                        <p>{person.important}</p>
                     </li>
                 ))}
             </ul>
